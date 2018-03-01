@@ -12,6 +12,42 @@
 <body>
 
     <p> the first paragraph </p>
+    <div id="output"></div>
+    <input type="button" id="firstBtn" value="pushy" >
+<script>
+
+var theArray = [] ;
+const elementNumber = 50 ;
+const spacer = '&nbsp;&nbsp;&nbsp;' ;
+const newline = '<br>' ;
+
+function fillArray(){
+    
+    for ( var i = 0 ; i < elementNumber ; i++) {
+        
+        theArray[i] = i * i ;
+        
+    }
+}
+
+function stickArrayIntoDiv(){
+    fillArray() ;
+    
+    var arrayStr = "" ;
+    for ( var i = 0 ; i < elementNumber ; i++) {
+        
+        arrayStr = arrayStr + theArray[i] + newline ;
+        
+    }    
+    
+    document.getElementById('output').innerHTML = arrayStr ;
+    
+}
+
+document.getElementById('firstBtn').addEventlistener( "click", stickArrayIntoDiv );
+
+
+</script>
 
 </body>
 </html>
