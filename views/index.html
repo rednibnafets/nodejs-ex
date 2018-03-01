@@ -11,9 +11,12 @@
 </head>
 <body>
 
-    <p> the first paragraph </p>
-    <div id="output"></div>
-    <input type="button" id="firstBtn" value="pushy" >
+    <p> the first array </p>
+    <section class="col-xs-12 col-sm-6 col-md-6">
+      <div id="output"></div>
+    </section
+    <input type="button" id="firstBtn" value="fill" >
+    <input type="button" id="secondBtn" value="clear" >
 <script>
 
 var theArray = [] ;
@@ -44,8 +47,16 @@ function stickArrayIntoDiv(){
     
 }
 
-document.getElementById('firstBtn').addEventListener( "click", stickArrayIntoDiv );
 
+function clearTheDiv(){
+    
+    
+    document.getElementById('output').innerHTML = "" ;
+    
+}
+
+document.getElementById('firstBtn').addEventListener( "click", stickArrayIntoDiv );
+document.getElementById('secontBtn').addEventListener( "click", clearTheDiv );
 
 </script>
 
