@@ -111,7 +111,9 @@ app.get('/third.html', function (req, res) {
     for ( var i = 0 ; i < allCounts.length ; i++) {
         console.log( allCounts[i]._id ) ;
     }
-    
+  }
+  
+    /*    
     allCounts(function(err, res){
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
@@ -119,8 +121,9 @@ app.get('/third.html', function (req, res) {
       res.render('third.html', { allCounts : allCounts });
     });
   } else {
-    res.render('third.html', { allCounts : null});
+    res.render('third.html', { allCounts : null });
   }
+  */
 });
 
 app.get('/pagecount', function (req, res) {
