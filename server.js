@@ -98,6 +98,27 @@ app.get('/second.html', function (req, res) {
   }
 });
 
+app.get('/third.html', function (req, res) {
+  // try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var allCounts = db.collection('counts').find({}).toArray() ;
+    // Create a document with request IP and current time of request
+    // col.insert({ip: req.ip, date: Date.now()});
+    allCounts(function(err, res){
+      if (err) {
+        console.log('Error fetching from collection. Message:\n'+err);
+      }
+      res.render('third.html', { allCounts : res });
+    });
+  } else {
+    res.render('third.html', { allCounts : null});
+  }
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
