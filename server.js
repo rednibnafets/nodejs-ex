@@ -106,7 +106,8 @@ app.get('/third.html', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    var allCounts = db.collection('counts').find({}).toArray() ;
+    //var allCounts = db.collection('counts').find({}).toArray() ;
+    var allCounts = db.collection('counts').find().toArray() ;
     res.render( 'third.html', { allCounts : allCounts } ) ;       
     /*
     allCounts(function(err, res){
