@@ -98,7 +98,8 @@ app.get('/second.html', function (req, res) {
   }
 });
 
-app.get('/third.html', function (req, res) {
+
+app.get('/third.html', function (res) {
   // try to initialize the db on every request if it's not already
   // initialized.
   if (!db) {
@@ -106,8 +107,6 @@ app.get('/third.html', function (req, res) {
   }
   if (db) {
     var allCounts = db.collection('counts').find({}).toArray() ;
-    // Create a document with request IP and current time of request
-    // col.insert({ip: req.ip, date: Date.now()});
     allCounts(function(err, res){
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
@@ -118,6 +117,22 @@ app.get('/third.html', function (req, res) {
     res.render('third.html', { allCounts : null});
   }
 });
+
+app.get('/pagecount', function (req, res) {
+  // try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.collection('counts').count(function(err, count ){
+      res.send('{ pageCount: ' + count + '}');
+    });
+  } else {
+    res.send('{ pageCount: -1 }');
+  }
+});
+
 
 // error handling
 app.use(function(err, req, res, next){
