@@ -99,7 +99,7 @@ app.get('/second.html', function (req, res) {
 });
 
 
-app.get('/third.html', function (res) {
+app.get('/third.html', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
   if (!db) {
@@ -111,7 +111,7 @@ app.get('/third.html', function (res) {
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
       }
-      res.render('third.html', { allCounts : res });
+      res.render('third.html', { allCounts : allCounts });
     });
   } else {
     res.render('third.html', { allCounts : null});
