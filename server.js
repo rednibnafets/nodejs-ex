@@ -107,13 +107,15 @@ app.get('/third.html', function (req, res) {
   }
   if (db) {
     var allCounts = db.collection('counts').find({}).toArray() ;
-       
+    res.render( 'third.html', { allCounts : allCounts } ) ;       
+    /*
     allCounts(function(err, res){
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
       }
-      res.render('third.html', { allCounts : { id: allCounts._id } });
+      res.render('third.html', { allCounts : allCounts});
     });
+    */
   } else {
     res.render('third.html', { allCounts : null });
   }

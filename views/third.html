@@ -12,12 +12,27 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <% allCounts.forEach(function(allCounts) { %>
-            <p><%= allCounts.id %></p>
-            <% }); %>
+           <table>
+              <% for(var i=0; i < allCounts.length; i++) { %>
+                  <tr>
+                  <td><%= allCounts[i]._id %></td>
+                  </tr>
+              <% } %>
+            </table>
         </div>
     </body>
 </html>
+
+<!--
+<table>
+<% for(var i=0; i < data.length; i++) { %>
+   <tr>
+     <td><%= data[i].id %></td>
+     <td><%= data[i].name %></td>
+   </tr>
+<% } %>
+</table>
+-->
 
 <!-- loop and render
 <div class="list-group">
