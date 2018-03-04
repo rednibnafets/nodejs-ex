@@ -107,23 +107,17 @@ app.get('/third.html', function (req, res) {
   }
   if (db) {
     var allCounts = db.collection('counts').find({}).toArray() ;
-    
-    for ( var i = 0 ; i < allCounts.length ; i++) {
-        console.log( allCounts[i]._id ) ;
-    }
-  }
-  
-    /*    
+       
     allCounts(function(err, res){
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
       }
-      res.render('third.html', { allCounts : allCounts });
+      res.render('third.html', { allCounts : { id: allCounts._id } });
     });
   } else {
     res.render('third.html', { allCounts : null });
   }
-  */
+  
 });
 
 app.get('/pagecount', function (req, res) {

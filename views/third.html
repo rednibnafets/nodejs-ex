@@ -13,8 +13,21 @@ and open the template in the editor.
     <body>
         <div>
             <% allCounts.forEach(function(allCounts) { %>
-            <p><%= allCounts._id %></p>
+            <p><%= allCounts.id %></p>
             <% }); %>
         </div>
     </body>
 </html>
+
+<!-- loop and render
+<div class="list-group">
+
+  <% posts.forEach((post) => { %>
+    <a href="/post/<%= post.id %>" class="list-group-item">
+      <h4 class="list-group-item-heading"><%= post.title %></h4>
+      <p class="list-group-item-text"><%= post.author %></p>
+    </a>
+  <% }) %>
+
+</div>
+-->
