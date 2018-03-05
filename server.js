@@ -106,22 +106,38 @@ app.get('/third.html', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
+      
+      
+        db.collection('counts', function (err, collection) {
+        
+         collection.find().toArray(function(err, items) {
+            if(err) throw err;  
+            res.render( 'third.html', { items : items } ) ;  
+       
+        });
+        
+    });
+  }
+});
+        
+ /*     
     //var allCounts = db.collection('counts').find({}).toArray() ;
     var allCounts = db.collection('counts').find().toArray() ;
     res.render( 'third.html', { allCounts : allCounts } ) ;       
-    /*
+    
     allCounts(function(err, res){
       if (err) {
         console.log('Error fetching from collection. Message:\n'+err);
       }
       res.render('third.html', { allCounts : allCounts});
     });
-    */
+   
   } else {
     res.render('third.html', { allCounts : null });
   }
-  
-});
+*/  
+
+
 
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
