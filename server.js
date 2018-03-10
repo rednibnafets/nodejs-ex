@@ -107,7 +107,7 @@ app.get('/readfromdb', function (req, res) {
   if (db) {
       
         var collection = db.collection('counts');
-       
+        console.log( "-- var collection declared --")
          collection.find().toArray(function(err, items) {
             if(err) throw err;  
             res.render( 'readfromdb', { 
