@@ -99,7 +99,18 @@ app.get('/second.html', function (req, res) {
 });
 
 app.get('/readfromdb', function (req, res) {
-  console.log( 'readfromdb') ;
+  console.log( '-- readfromdb --') ;
+ if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('counts');
+    col.find(function(err, count){
+      console.log( '--- col_find ---') ;
+    });
+  } else {
+    res.render('second.html', { pageCountMessage : null});
+  }  
 });
      
 
