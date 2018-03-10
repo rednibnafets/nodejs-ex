@@ -98,6 +98,26 @@ app.get('/second.html', function (req, res) {
   }
 });
 
+app.get('/readfromdb', function (req, res) {
+  // try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+      
+        var collection = db.get('counts');
+       
+         collection.find().toArray(function(err, items) {
+            if(err) throw err;  
+            res.render( 'readfromdb', { 
+                items : items 
+            });  
+       
+        });
+    }
+});
+     
 
 app.get('/third.html', function (req, res) {
   // try to initialize the db on every request if it's not already
