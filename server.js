@@ -107,17 +107,16 @@ app.get('/third.html', function (req, res) {
   }
   if (db) {
       
-      
-        db.collection('counts', function (err, collection) {
-        
+        var collection = db.get('counts');
+       
          collection.find().toArray(function(err, items) {
             if(err) throw err;  
-            res.render( 'third.html', { items : items } ) ;  
+            res.render( 'third.html', { 
+                items : items 
+            });  
        
         });
-        
-    });
-  }
+    }
 });
         
  /*     
